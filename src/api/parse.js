@@ -13,7 +13,7 @@ import sendGrid from '../@js/sendgrid'
 export default async (request, env, ctx) => {
   const body = await request.formData()
   const email = body.get('from')
-  const file = body.get('file')
+  const file = body.get('attachment1')
 
   const { ACCOUNTS } = env
 

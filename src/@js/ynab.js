@@ -27,13 +27,13 @@ export async function getYnabApi(parsedCipher, id, email, env) {
       })
     })
     .then(handleResponse)
-    .then(async (data) => {
+    .then(async ({access_token, refresh_token}) => {
       console.log('Refreshed Token')
 
       let cipher
 
-      parsedCipher.ynab_access_token = data.access_token
-      parsedCipher.ynab_refresh_token = data.refresh_token
+      parsedCipher.ynab_access_token = access_token
+      parsedCipher.ynab_refresh_token = refresh_token
 
       if (id && email)
         cipher = Buffer.from(sjcl.encrypt(
