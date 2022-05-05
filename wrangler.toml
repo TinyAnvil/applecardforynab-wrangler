@@ -1,0 +1,21 @@
+name = "applecardforynab"
+type = "javascript"
+compatibility_date = "2022-05-05"
+account_id = "dfd716443bca4859850dd27a6f885a60"
+usage_model = "bundled"
+workers_dev = true
+
+kv_namespaces = [ 
+  { binding = "ACCOUNTS", id = "59710b5f5a894958a4881ce6a9fa3178" }
+]
+
+[vars]
+NODE_ENV = "production"
+
+[build]
+command = "npm run build"
+
+[build.upload]
+dir = "dist"
+format = "modules"
+main = "./index.mjs"
