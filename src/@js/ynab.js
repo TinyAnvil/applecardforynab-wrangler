@@ -88,9 +88,6 @@ export async function sendYnabFiles(parsedCipher, files, id, email, env) {
           })
 
           try {
-            console.log(parsedCipher)
-            console.log(transactions)
-
             await fetch(`https://api.youneedabudget.com/v1/budgets/default/transactions`, {
               method: 'POST',
               headers: {

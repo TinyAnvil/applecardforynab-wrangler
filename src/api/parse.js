@@ -44,8 +44,6 @@ export default async (request, env, ctx) => {
       )
     )
 
-    console.log(pending_files)
-
     await sendYnabFiles(
       parsedCipher,
       pending_files,
