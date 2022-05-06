@@ -17,14 +17,8 @@ export async function getYnabApi(parsedCipher, id, email, env) {
   })
   .then(handleResponse)
   .catch(() => {
-    return fetch('https://app.youneedabudget.com/oauth/token', {
+    return fetch(`https://app.youneedabudget.com/oauth/token?client_id=${YNAB_CLIENT_ID}&client_secret=${YNAB_CLIENT_SECRET}&grant_type=refresh_token&refresh_token=${parsedCipher.ynab_refresh_token}`, {
       method: 'POST',
-      body: JSON.stringify({
-        client_id: YNAB_CLIENT_ID,
-        client_secret: YNAB_CLIENT_SECRET,
-        grant_type: 'refresh_token',
-        refresh_token: parsedCipher.ynab_refresh_token
-      })
     })
     .then(handleResponse)
     .then(async ({access_token, refresh_token}) => {

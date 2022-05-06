@@ -18,7 +18,7 @@ export default async (request, env, ctx) => {
   if (parsedCipher.ct)
     throw new StatusError(400)
 
-  await getYnabApi(parsedCipher, null, null, env)
+  await getYnabApi(parsedCipher, id, null, env)
 
   const accounts = await fetch(`https://api.youneedabudget.com/v1/budgets/default/accounts`, {
     headers: {
