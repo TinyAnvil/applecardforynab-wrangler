@@ -18,10 +18,11 @@ export default async (request, env, ctx) => {
   let cipher = await ACCOUNTS.get(id)
 
   const parsedCipher = JSON.parse(Buffer.from(cipher, 'base64').toString('utf8'))
-  const email = parsedCipher.email
 
   if (parsedCipher.ct)
     throw new StatusError(400)
+
+  const email = parsedCipher.email
 
   parsedCipher.ynab_account_id = account_id
 

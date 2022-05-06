@@ -12,20 +12,26 @@ import sendGrid from '../@js/sendgrid'
 
 export default async (request, env, ctx) => {
   const body = await request.formData()
-  const email = body.get('from')
   const file = body.get('attachment1')
-
   const { ACCOUNTS } = env
 
-  if (!email)
-    throw new StatusError(400)
+  let email = body.get('from')
+
+  if (
+    !email 
+    || !file
+  ) throw new StatusError(400)
+
+  email = email.toLowerCase()
 
   const id = shajs('sha256').update(email).digest('hex')
-  const pending_files = file ? [Buffer.from(await file.arrayBuffer()).toString('utf8')] : []
+  const pending_files = [Buffer.from(await file.arrayBuffer()).toString('utf8')]
   
   let cipher = await ACCOUNTS.get(id)
 
-  if (!cipher) {
+  const parsedCipher = cipher ? JSON.parse(Buffer.from(cipher, 'base64').toString('utf8')) : null
+
+  if (!parsedCipher?.ct) {
     cipher = Buffer.from(JSON.stringify({
       email,
       pending_files

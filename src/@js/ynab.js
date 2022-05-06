@@ -35,7 +35,7 @@ export async function getYnabApi(parsedCipher, id, email, env) {
       parsedCipher.ynab_access_token = access_token
       parsedCipher.ynab_refresh_token = refresh_token
 
-      if (id && email)
+      if (email && id)
         cipher = Buffer.from(sjcl.encrypt(
           email + id,
           JSON.stringify(parsedCipher)
