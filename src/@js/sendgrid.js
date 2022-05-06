@@ -30,10 +30,6 @@ export default function(email, id, env) {
       }],
       from: {
         email: 'noreply@applecardforynab.com',
-      },
-      reply_to: {
-        email: 'eat@kalepail.com',
-        name: 'kalepail'
       }
     })
   })

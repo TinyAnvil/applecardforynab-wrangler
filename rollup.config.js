@@ -4,6 +4,7 @@ import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from 'rollup';
+import json from '@rollup/plugin-json';
 
 const config = defineConfig({
   input: 'src/index.js',
@@ -12,6 +13,7 @@ const config = defineConfig({
     format: 'esm',
   },
   plugins: [
+    json(),
     commonjs(),
     babel({ 
       babelHelpers: 'bundled' 

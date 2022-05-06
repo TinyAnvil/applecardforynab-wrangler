@@ -6,7 +6,7 @@ usage_model = "bundled"
 workers_dev = true
 
 kv_namespaces = [ 
-  { binding = "ACCOUNTS", id = "59710b5f5a894958a4881ce6a9fa3178" }
+  { binding = "ACCOUNTS", id = "2b7c08842efe4e008bb91e6a3e13c2d4" }
 ]
 
 [vars]

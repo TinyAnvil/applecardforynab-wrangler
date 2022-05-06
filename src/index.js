@@ -8,6 +8,7 @@ import apiParse from './api/parse'
 import apiAccess from './api/access'
 import apiRefresh from './api/refresh'
 import apiUpdate from './api/update'
+// import apiAccounts from './api/accounts'
 
 const router = Router()
 
@@ -15,6 +16,7 @@ router.post('/parse', apiParse)
 router.post('/access', apiAccess)
 router.post('/refresh', apiRefresh)
 router.post('/update', apiUpdate)
+// router.get('/accounts', apiAccounts)
 router.all('*', () => { throw new StatusError(404, 'Not Found') })
 
 export default { 

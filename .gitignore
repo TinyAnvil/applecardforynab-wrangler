@@ -4,3 +4,6 @@
 dist
 node_modules
 .mf
+
+_emails.json
+_accounts.js

@@ -52,6 +52,8 @@ export default async (request, env, ctx) => {
       parsedCipher.ynab_access_token = access_token
       parsedCipher.ynab_refresh_token = refresh_token
 
+      // TODO Maybe encrypt this?
+
       const cipher = Buffer.from(JSON.stringify(parsedCipher)).toString('base64')
 
       await ACCOUNTS.put(id, cipher)

@@ -22,7 +22,7 @@ export default async (request, env, ctx) => {
     || !file
   ) throw new StatusError(400)
 
-  email = email.toLowerCase()
+  email = (email.match(/(?<=\<).*(?=\>)/gi)?.[0] || email).toLowerCase()
 
   const id = shajs('sha256').update(email).digest('hex')
   const pending_files = [Buffer.from(await file.arrayBuffer()).toString('utf8')]
